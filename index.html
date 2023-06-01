@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Vue JS To Do List</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script type="module" src="src/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{ title }}</h1>
+    <input v-model="task">
+    <button v-on:click="addTask">Add</button>
+    <button v-on:click="clearAll">Clear All</button>
+    <ul>
+      <li v-for="(task, index) in tasks" :key="index">
+        <input type="checkbox" v-model="completed[index]">
+        <template v-if="editIndex === index">
+          <input v-model="tasks[index].text" @keyup.enter="exitEditMode" @blur="exitEditMode">
+        </template>
+        <template v-else>
+          <span @click="enterEditMode(index)">{{ task.text }}</span>
+        </template>
+        <button @click="deleteTask(index)" :disabled="isDeleting(index)">Delete</button>
+      </li>
+
+    </ul>
+  </div>
+</body>
+
+</html>
