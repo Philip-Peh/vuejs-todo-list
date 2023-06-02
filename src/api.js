@@ -1,5 +1,6 @@
 
-const API_URL = 'https://furthermore-suggestions-rpm-legends.trycloudflare.com';
+// const API_URL = 'https://furthermore-suggestions-rpm-legends.trycloudflare.com';
+const API_URL = 'http://localhost:3000';
 
 // Helper function to fetch data from API
 export async function fetchData(url, method = 'GET', body = null) {
