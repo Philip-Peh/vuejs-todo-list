@@ -1,0 +1,129 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1B1D2B;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #242836;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  color: #F0E68C;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.inputBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.inputBar input {
+  flex-grow: 1;
+  height: 35px;
+  font-size: 18px;
+  padding: 2 10px;
+  margin-right: 25px;
+  min-width: 0;
+  /* Ensure the input field can shrink */
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #363B4D;
+  color: #F0E68C;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.clearButton {
+  background-color: purple;
+  margin-top: 10px;
+  align-self: flex-end;
+}
+
+.deleteButton {
+  background-color: blue;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+li input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+li span {
+  cursor: pointer;
+  flex-grow: 1;
+  color: #F0E68C;
+}
+
+li button {
+  margin-left: auto;
+  /*Push the delete button to the right*/
+}
+
+button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+  pointer-events: none;
+  /* Additional style for disabled state */
+}
+
+@media screen and (max-width: 600px) {
+  #app {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .inputBar {
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 10px;
+  }
+
+  .inputBar input {
+    margin-bottom: 10px;
+    margin-right: 0px;
+  }
+
+  .inputBar div {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+
+  .inputBar div button {
+    margin-left: 10px;
+  }
+}

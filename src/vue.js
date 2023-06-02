@@ -7,8 +7,8 @@ var app = new Vue({
     el: '#app',
     data() {
         return {
-            title: 'To Do List for Success',
-            task: '',
+            newTask: '',
+            editedTask: '',
             tasks: [],
             completed: [],
             editIndex: -1,
@@ -20,14 +20,11 @@ var app = new Vue({
         this.loadTasks();
     },
     methods: {
-
         async addTask() {
-            await addTodo(this.task)
-            this.task = ''
+            if (this.newTask === '') return
+            await addTodo(this.newTask)
+            this.newTask = ''
             this.loadTasks()
-        },
-        addNewTask(task) {
-            this.tasks.push(task);
         },
         async clearAll() {
             for (let i = 0; i < this.tasks.length; i++) {
@@ -38,7 +35,7 @@ var app = new Vue({
         },
         enterEditMode(index) {
             this.editIndex = index
-            this.task = this.tasks[index].text
+            this.editedTask = this.tasks[index].text
         },
         async deleteTask(index) {
             this.deleting.push(index);
@@ -52,7 +49,7 @@ var app = new Vue({
         },
         async exitEditMode() {
             const index = this.editIndex;
-            const todoMsg = this.tasks[index].text
+            const todoMsg = this.editedTask
             console.log(this.tasks[index].id, todoMsg)
             await editTodo(this.tasks[index].id, todoMsg.toString())
                 .then(() => {

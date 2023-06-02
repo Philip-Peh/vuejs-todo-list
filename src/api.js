@@ -50,7 +50,7 @@ export async function editTodo(id, newText) {
 
 // Function to delete a todo
 export async function deleteTodo(id) {
-    console.log(id)
+    console.log('to delete:', id)
     const response = await fetchData(`${API_URL}/todos/${id}`, 'DELETE');
     if (response) {
         console.log('Entry Deleted:', response);

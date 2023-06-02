@@ -5,19 +5,24 @@
   <title>Vue JS To Do List</title>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script type="module" src="src/vue.js"></script>
+  <link rel="stylesheet" type="text/css" href="../style.css">
+  <style> </style>
 </head>
 
 <body>
   <div id="app">
-    <h1>{{ title }}</h1>
-    <input v-model="task">
-    <button v-on:click="addTask">Add</button>
-    <button v-on:click="clearAll">Clear All</button>
+    <div class="inputBar">
+      <input @keyup.enter="addTask" v-model="newTask" placeholder="Enter a task...">
+      <div>
+        <button :disabled="newTask.length<=0" v-on:click="addTask">Add</button>
+      </div>
+    </div>
+
     <ul>
       <li v-for="(task, index) in tasks" :key="index">
         <input type="checkbox" v-model="completed[index]">
         <template v-if="editIndex === index">
-          <input v-model="tasks[index].text" @keyup.enter="exitEditMode" @blur="exitEditMode">
+          <input v-model="editedTask" @keyup.enter="exitEditMode">
         </template>
         <template v-else>
           <span @click="enterEditMode(index)">{{ task.text }}</span>
@@ -26,6 +31,9 @@
       </li>
 
     </ul>
+    <template v-if="tasks.length>0">
+      <button class="clearButton" v-on:click="clearAll">Clear All</button>
+    </template>
   </div>
 </body>
 
